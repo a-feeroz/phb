@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("com.sap.b.controller.View1", {
+	return Controller.extend("com.sap.booking.controller.View1", {
 		onInit: function () {
 
 		}
