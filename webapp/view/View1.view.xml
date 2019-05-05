@@ -10,7 +10,7 @@
 								<fb:filterItems>
 									<fb:FilterItem name="A0" label="{i18n>label1}">
 										<fb:control>
-											<MultiInput type="Text" valueHelpRequest="onValueHelpRequest"/>
+											<MultiInput type="Text" valueHelpRequest="onValueHelpRequest" showValueHelp="true" valueHelpOnly="true" ShowSuggestion="true"/>
 										</fb:control>
 									</fb:FilterItem>
 									<fb:FilterItem name="B0" label="{i18n>label2}" labelTooltip="Tooltip Example">
