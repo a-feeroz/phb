@@ -10,11 +10,19 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"S1": {
+				"uri": "/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -31,7 +39,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -58,6 +65,10 @@
 				"settings": {
 					"bundleName": "com.sap.booking.i18n.i18n"
 				}
+			},
+			"": {
+				"dataSource": "S1"
+
 			}
 		},
 		"resources": {
@@ -78,7 +89,9 @@
 			"routes": [{
 				"name": "RouteView1",
 				"pattern": "RouteView1",
-				"target": ["TargetView1"]
+				"target": [
+					"TargetView1"
+				]
 			}],
 			"targets": {
 				"TargetView1": {
