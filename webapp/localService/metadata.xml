@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema Namespace="S1" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+			<EntityType Name="Project">
+				<Key>
+					<PropertyRef Name="ProjectId"/>
+				</Key>
+				<Property Name="ProjectId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+				<Property Name="ProjectName" Type="Edm.String" MaxLength="40"/>
+			</EntityType>
+			<EntityType Name="Year">
+				<Key>
+					<PropertyRef Name="Year"/>
+				</Key>
+				<Property Name="Year" Type="Edm.String" Precision="7"/>
+			</EntityType>
+			<EntityContainer Name="ProjectEntities" m:IsDefaultEntityContainer="true">
+				<EntitySet EntityType="S1.Project" Name="ProjectSet"/>
+				<EntitySet EntityType="S1.Year" Name="YearSet"/>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

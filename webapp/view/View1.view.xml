@@ -10,14 +10,14 @@
 								<fb:filterItems>
 									<fb:FilterItem name="A0" label="{i18n>label1}">
 										<fb:control>
-											<MultiInput type="Text" valueHelpRequest="onValueHelpRequest" showValueHelp="true" valueHelpOnly="true" ShowSuggestion="true"/>
+											<Input id="productInput" type="Text"  showValueHelp="true" valueHelpRequest="handleValueHelp"></Input>
 										</fb:control>
 									</fb:FilterItem>
 									<fb:FilterItem name="B0" label="{i18n>label2}" labelTooltip="Tooltip Example">
 										<fb:control>
-											<Select id="select" forceSelection="false">
+											<Select id="select" items="{/YearSet}" forceSelection="false">
 												<items>
-													<core:Item key="{ProductId}" text="{Name}"/>
+													<core:Item key="{Year}" text="{Year}"/>
 												</items>
 											</Select>
 										</fb:control>
