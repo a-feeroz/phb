@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "com.sap.b",
+		"id": "com.sap.booking",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -35,7 +35,7 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "com.sap.b.view.View1",
+			"viewName": "com.sap.booking.view.View1",
 			"type": "XML",
 			"async": true,
 			"id": "View1"
@@ -56,7 +56,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.sap.b.i18n.i18n"
+					"bundleName": "com.sap.booking.i18n.i18n"
 				}
 			}
 		},
@@ -70,7 +70,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "com.sap.b.view",
+				"viewPath": "com.sap.booking.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false

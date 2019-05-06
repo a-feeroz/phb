@@ -1,9 +1,48 @@
-<mvc:View controllerName="com.sap.b.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="com.sap.booking.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page id="idPage" title="{i18n>title}">
-					<content></content>
+				<Page>
+					<content>
+						<l:VerticalLayout width="100%">
+							<fb:FilterBar showFilterConfiguration="true" useToolbar="false">
+								<fb:filterItems>
+									<fb:FilterItem name="A0" label="{i18n>label1}">
+										<fb:control>
+											<MultiInput type="Text" valueHelpRequest="onValueHelpRequest" showValueHelp="true" valueHelpOnly="true" ShowSuggestion="true"/>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem name="B0" label="{i18n>label2}" labelTooltip="Tooltip Example">
+										<fb:control>
+											<Select id="select" forceSelection="false">
+												<items>
+													<core:Item key="{ProductId}" text="{Name}"/>
+												</items>
+											</Select>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem name="C0" label="{i18n>label3}" labelTooltip="Tooltip Example">
+										<fb:control>
+											<Select id="select1" showSecondaryValues="false" forceSelection="false">
+												<items>
+													<core:Item text="{i18n>textcore1}"/>
+													<core:Item text="{i18n>textcore2}"/>
+												</items>
+											</Select>
+										</fb:control>
+									</fb:FilterItem>
+								</fb:filterItems>
+							</fb:FilterBar>
+						</l:VerticalLayout>
+					</content>
+					<footer>
+						<Bar>
+							<contentRight>
+								<Button text="{i18n>buttontext}"></Button>
+							</contentRight>
+						</Bar>
+					</footer>
 				</Page>
 			</pages>
 		</App>
