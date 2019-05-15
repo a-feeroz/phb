@@ -15,7 +15,7 @@
 		},
 		"dataSources": {
 			"S1": {
-				"uri": "/",
+				"uri": "https://hxehost:51046/xsodata/ProjectServices.xsodata/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"

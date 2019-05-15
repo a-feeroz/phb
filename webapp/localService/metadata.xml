@@ -16,9 +16,111 @@
 				</Key>
 				<Property Name="Year" Type="Edm.String" Precision="7"/>
 			</EntityType>
+			<EntityType Name="BookingType">
+				<Key>
+					<PropertyRef Name="BookingType"/>
+				</Key>
+				<Property Name="BookingType" Type="Edm.String" Precision="7"/>
+			</EntityType>
+			<EntityType Name="Resource">
+				<Key>
+					<PropertyRef Name="Resource"/>
+				</Key>
+				<Property Name="Resource" Type="Edm.String" Precision="7"/>
+			</EntityType>
+			<EntityType Name="Task">
+				<Key>
+					<PropertyRef Name="Taskid"/>
+				</Key>
+				<Property Name="Taskid" Type="Edm.String" Precision="7"/>
+				<Property Name="Taskdescription" Type="Edm.String" Precision="7"/>
+			</EntityType>
+			<EntityType Name="Booking">
+				<Key>
+					<PropertyRef Name="ProjectId"/>
+					<PropertyRef Name="Year"/>
+					<PropertyRef Name="BookingType"/>
+				</Key>
+				<Property Name="ProjectId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+				<Property Name="Year" Type="Edm.String" Precision="7"/>
+				<Property Name="BookingType" Type="Edm.String" Precision="7"/>
+				<Property Name="Resource" Type="Edm.String" Precision="7"/>
+				<Property Name="Task" Type="Edm.String" Precision="7"/>
+				<Property Name="Week1" Type="Edm.String" Precision="7"/>
+				<Property Name="Week2" Type="Edm.String" Precision="7"/>
+				<Property Name="Week3" Type="Edm.String" Precision="7"/>
+				<Property Name="Week4" Type="Edm.String" Precision="7"/>
+				<Property Name="Week5" Type="Edm.String" Precision="7"/>
+				<Property Name="Week6" Type="Edm.String" Precision="7"/>
+				<Property Name="Week7" Type="Edm.String" Precision="7"/>
+				<Property Name="Week8" Type="Edm.String" Precision="7"/>
+				<Property Name="Week9" Type="Edm.String" Precision="7"/>
+				<Property Name="Week10" Type="Edm.String" Precision="7"/>
+				<Property Name="Week11" Type="Edm.String" Precision="7"/>
+				<Property Name="Week12" Type="Edm.String" Precision="7"/>
+				<Property Name="Week13" Type="Edm.String" Precision="7"/>
+				<Property Name="Week14" Type="Edm.String" Precision="7"/>
+				<Property Name="Week15" Type="Edm.String" Precision="7"/>
+				<Property Name="Week16" Type="Edm.String" Precision="7"/>
+				<Property Name="Week17" Type="Edm.String" Precision="7"/>
+				<Property Name="Week18" Type="Edm.String" Precision="7"/>
+				<Property Name="Week19" Type="Edm.String" Precision="7"/>
+				<Property Name="Week20" Type="Edm.String" Precision="7"/>
+				<Property Name="Week21" Type="Edm.String" Precision="7"/>
+				<Property Name="Week22" Type="Edm.String" Precision="7"/>
+				<Property Name="Week23" Type="Edm.String" Precision="7"/>
+				<Property Name="Week24" Type="Edm.String" Precision="7"/>
+				<Property Name="Week25" Type="Edm.String" Precision="7"/>
+				<Property Name="Week26" Type="Edm.String" Precision="7"/>
+				<Property Name="Week27" Type="Edm.String" Precision="7"/>
+				<Property Name="Week28" Type="Edm.String" Precision="7"/>
+				<Property Name="Week29" Type="Edm.String" Precision="7"/>
+				<Property Name="Week30" Type="Edm.String" Precision="7"/>
+				<Property Name="Week31" Type="Edm.String" Precision="7"/>
+				<Property Name="Week32" Type="Edm.String" Precision="7"/>
+				<Property Name="Week33" Type="Edm.String" Precision="7"/>
+				<Property Name="Week34" Type="Edm.String" Precision="7"/>
+				<Property Name="Week35" Type="Edm.String" Precision="7"/>
+				<Property Name="Week36" Type="Edm.String" Precision="7"/>
+				<Property Name="Week37" Type="Edm.String" Precision="7"/>
+				<Property Name="Week38" Type="Edm.String" Precision="7"/>
+				<Property Name="Week39" Type="Edm.String" Precision="7"/>
+				<Property Name="Week40" Type="Edm.String" Precision="7"/>
+				<Property Name="Week41" Type="Edm.String" Precision="7"/>
+				<Property Name="Week42" Type="Edm.String" Precision="7"/>
+				<Property Name="Week43" Type="Edm.String" Precision="7"/>
+				<Property Name="Week44" Type="Edm.String" Precision="7"/>
+				<Property Name="Week45" Type="Edm.String" Precision="7"/>
+				<Property Name="Week46" Type="Edm.String" Precision="7"/>
+				<Property Name="Week47" Type="Edm.String" Precision="7"/>
+				<Property Name="Week48" Type="Edm.String" Precision="7"/>
+				<Property Name="Week49" Type="Edm.String" Precision="7"/>
+				<Property Name="Week50" Type="Edm.String" Precision="7"/>
+				<Property Name="Week51" Type="Edm.String" Precision="7"/>
+				<Property Name="Week52" Type="Edm.String" Precision="7"/>
+			</EntityType>
+			<EntityType Name="Booking1">
+				<Key>
+					<PropertyRef Name="Identifier"/>
+					
+				</Key>
+				<Property Name="Identifier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+				<Property Name="ProjectId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+				<Property Name="Year" Type="Edm.String" Precision="7"/>
+				<Property Name="BookingType" Type="Edm.String" Precision="7"/>
+				<Property Name="Resource" Type="Edm.String" Precision="7"/>
+				<Property Name="Task" Type="Edm.String" Precision="7"/>
+				<Property Name="Week" Type="Edm.String" Precision="7"/>
+				<Property Name="hours" Type="Edm.String" Precision="7"/>
+			</EntityType>
 			<EntityContainer Name="ProjectEntities" m:IsDefaultEntityContainer="true">
 				<EntitySet EntityType="S1.Project" Name="ProjectSet"/>
 				<EntitySet EntityType="S1.Year" Name="YearSet"/>
+				<EntitySet EntityType="S1.Resource" Name="ResourceSet"/>
+				<EntitySet EntityType="S1.Task" Name="TaskSet"/>
+				<EntitySet EntityType="S1.Booking" Name="BookingSet"/>
+				<EntitySet EntityType="S1.BookingType" Name="BookingTypeSet"/>
+				<EntitySet EntityType="S1.Booking1" Name="Booking1Set"/>
 			</EntityContainer>
 		</Schema>
 	</edmx:DataServices>
