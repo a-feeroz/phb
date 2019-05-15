@@ -1,0 +1,29 @@
+[{
+	"Taskid": "Task 1",
+	"Taskdescription": "Taskdescription 1",
+	"__metadata": {
+		"uri": "TaskSet('Taskid%201')",
+		"type": "S1.Task"
+	}
+}, {
+	"Taskid": "Task 2",
+	"Taskdescription": "Taskdescription 2",
+	"__metadata": {
+		"uri": "TaskSet('Taskid%202')",
+		"type": "S1.Task"
+	}
+}, {
+	"Taskid": "Task 3",
+	"Taskdescription": "Taskdescription 3",
+	"__metadata": {
+		"uri": "TaskSet('Taskid%203')",
+		"type": "S1.Task"
+	}
+}, {
+	"Taskid": "Task 4",
+	"Taskdescription": "Taskdescription 4",
+	"__metadata": {
+		"uri": "TaskSet('Taskid%204')",
+		"type": "S1.Task"
+	}
+}]

@@ -1,21 +1,21 @@
 <mvc:View controllerName="com.sap.booking.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
-	xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	xmlns:t="sap.ui.table" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page>
 					<content>
 						<l:VerticalLayout width="100%">
-							<fb:FilterBar showFilterConfiguration="true" useToolbar="false">
+							<fb:FilterBar showFilterConfiguration="true" useToolbar="false" search="onSearch">
 								<fb:filterItems>
 									<fb:FilterItem name="A0" label="{i18n>label1}">
 										<fb:control>
-											<Input id="productInput" type="Text"  showValueHelp="true" valueHelpRequest="handleValueHelp"></Input>
+											<Input id="idProject" type="Text" showValueHelp="true" valueHelpRequest="handleValueHelp"></Input>
 										</fb:control>
 									</fb:FilterItem>
 									<fb:FilterItem name="B0" label="{i18n>label2}" labelTooltip="Tooltip Example">
 										<fb:control>
-											<Select id="select" items="{/YearSet}" forceSelection="false">
+											<Select id="idYear" items="{/YearSet}" forceSelection="false" change="onSelectYear">
 												<items>
 													<core:Item key="{Year}" text="{Year}"/>
 												</items>
@@ -24,10 +24,9 @@
 									</fb:FilterItem>
 									<fb:FilterItem name="C0" label="{i18n>label3}" labelTooltip="Tooltip Example">
 										<fb:control>
-											<Select id="select1" showSecondaryValues="false" forceSelection="false">
+											<Select id="idBookingType" showSecondaryValues="false" forceSelection="false" items="{/BookingTypeSet}">
 												<items>
-													<core:Item text="{i18n>textcore1}"/>
-													<core:Item text="{i18n>textcore2}"/>
+													<core:Item key="{BookingTypeId}" text="{BookingTypeText}"/>
 												</items>
 											</Select>
 										</fb:control>
@@ -35,11 +34,614 @@
 								</fb:filterItems>
 							</fb:FilterBar>
 						</l:VerticalLayout>
+						<t:Table id="idTableVisibility" ariaLabelledBy="title" visible="false" selectionMode="Single" fixedColumnCount="2"
+							rows="{jsonmodel>/bookingSet}">
+							<t:toolbar>
+								<Toolbar>
+									<content>
+										<ToolbarSpacer/>
+										<Text text="Auto-fill"></Text>
+										<Button icon="sap-icon://add" tooltip="add the new row" press="onPressAddButton"/>
+										<Button icon="sap-icon://delete" tooltip="delete the single row" press="onPressDeleteButton"/>
+									</content>
+								</Toolbar>
+							</t:toolbar>
+							<t:columns>
+								<t:Column width="8rem">
+									<Label text="Resource"/>
+									<t:template>
+										<Select selectedKey="{jsonmodel>ResourceId}" items="{/ResourceSet}" forceSelection="false">
+											<core:Item text="{ResourceName}" key="{ResourceId}"/>
+										</Select>
+									</t:template>
+								</t:Column>
+								<t:Column width="12rem">
+									<Label text="Task"/>
+									<t:template>
+										<Select selectedKey="{jsonmodel>TaskId}" items="{/TaskSet}" forceSelection="false">
+											<core:Item text="{TaskName}" key="{TaskId}"/>
+										</Select>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week1"></Label>
+											<Label text="{jsonmodel>/weeks/0/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value="{jsonmodel>Week1}"></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week2"></Label>
+											<Label text="{jsonmodel>/weeks/1/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value="{jsonmodel>Week2}"></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week3"></Label>
+											<Label text="{jsonmodel>/weeks/2/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value="{jsonmodel>Week3}"></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week4"></Label>
+											<Label text="{jsonmodel>/weeks/3/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value="{jsonmodel>Week4}"></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week5"></Label>
+											<Label text="{jsonmodel>/weeks/4/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value="{jsonmodel>Week5}"></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week6"></Label>
+											<Label text="{jsonmodel>/weeks/5/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week7"></Label>
+											<Label text="{jsonmodel>/weeks/6/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week8"></Label>
+											<Label text="{jsonmodel>/weeks/7/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week9"></Label>
+											<Label text="{jsonmodel>/weeks/8/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week10"></Label>
+											<Label text="{jsonmodel>/weeks/9/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week11"></Label>
+											<Label text="{jsonmodel>/weeks/10/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week12"></Label>
+											<Label text="{jsonmodel>/weeks/11/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week13"></Label>
+											<Label text="{jsonmodel>/weeks/12/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week14"></Label>
+											<Label text="{jsonmodel>/weeks/13/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week15"></Label>
+											<Label text="{jsonmodel>/weeks/14/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week16"></Label>
+											<Label text="{jsonmodel>/weeks/15/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week17"></Label>
+											<Label text="{jsonmodel>/weeks/16/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week18"></Label>
+											<Label text="{jsonmodel>/weeks/17/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week19"></Label>
+											<Label text="{jsonmodel>/weeks/18/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week20"></Label>
+											<Label text="{jsonmodel>/weeks/19/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week21"></Label>
+											<Label text="{jsonmodel>/weeks/20/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week22"></Label>
+											<Label text="{jsonmodel>/weeks/21/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week23"></Label>
+											<Label text="{jsonmodel>/weeks/22/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week24"></Label>
+											<Label text="{jsonmodel>/weeks/23/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week25"></Label>
+											<Label text="{jsonmodel>/weeks/24/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week26"></Label>
+											<Label text="{jsonmodel>/weeks/25/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week27"></Label>
+											<Label text="{jsonmodel>/weeks/26/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week28"></Label>
+											<Label text="{jsonmodel>/weeks/27/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week29"></Label>
+											<Label text="{jsonmodel>/weeks/28/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week30"></Label>
+											<Label text="{jsonmodel>/weeks/29/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week31"></Label>
+											<Label text="{jsonmodel>/weeks/30/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week32"></Label>
+											<Label text="{jsonmodel>/weeks/31/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week33"></Label>
+											<Label text="{jsonmodel>/weeks/32/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week34"></Label>
+											<Label text="{jsonmodel>/weeks/33/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week35"></Label>
+											<Label text="{jsonmodel>/weeks/34/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week36"></Label>
+											<Label text="{jsonmodel>/weeks/35/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week37"></Label>
+											<Label text="{jsonmodel>/weeks/36/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week38"></Label>
+											<Label text="{jsonmodel>/weeks/37/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week39"></Label>
+											<Label text="{jsonmodel>/weeks/38/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week40"></Label>
+											<Label text="{jsonmodel>/weeks/39/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week41"></Label>
+											<Label text="{jsonmodel>/weeks/40/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week42"></Label>
+											<Label text="{jsonmodel>/weeks/41/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week43"></Label>
+											<Label text="{jsonmodel>/weeks/42/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week44"></Label>
+											<Label text="{jsonmodel>/weeks/43/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week45"></Label>
+											<Label text="{jsonmodel>/weeks/44/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week46"></Label>
+											<Label text="{jsonmodel>/weeks/45/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week47"></Label>
+											<Label text="{jsonmodel>/weeks/46/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week48"></Label>
+											<Label text="{jsonmodel>/weeks/47/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week49"></Label>
+											<Label text="{jsonmodel>/weeks/48/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week50"></Label>
+											<Label text="{jsonmodel>/weeks/49/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week51"></Label>
+											<Label text="{jsonmodel>/weeks/50/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+								<t:Column width="7rem">
+									<VBox>
+										<items>
+											<Label text="Week52"></Label>
+											<Label text="{jsonmodel>/weeks/51/day}"/>
+										</items>
+									</VBox>
+									<t:template>
+										<Input value=""></Input>
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
 					</content>
 					<footer>
 						<Bar>
 							<contentRight>
-								<Button text="{i18n>buttontext}"></Button>
+								<Button text="{i18n>buttontext}" press="onPressSaveButton"></Button>
 							</contentRight>
 						</Bar>
 					</footer>

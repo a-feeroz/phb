@@ -1,0 +1,37 @@
+[{
+	"ProjectId": "ProjectId 1",
+	"Year": "2019",
+	"BookingType": "P",
+	"Resource": "Resource 1",
+	"Task": "Task 1",
+	"Week": "1",
+	"hours": "40",
+	"__metadata": {
+		"uri": "Booking1Set(ProjectId='ProjectId%201',Year='Year%201',BookingType='BookingType%201')",
+		"type": "S1.Booking1"
+	}
+}, {
+	"ProjectId": "ProjectId 1",
+	"Year": "2019",
+	"BookingType": "P",
+	"Resource": "Resource 1",
+	"Task": "Task 2",
+	"Week": "2",
+	"hours": "30",
+	"__metadata": {
+		"uri": "Booking1Set(ProjectId='ProjectId%202',Year='Year%202',BookingType='BookingType%202')",
+		"type": "S1.Booking1"
+	}
+}, {
+	"ProjectId": "ProjectId 1",
+	"Year": "2018",
+	"BookingType": "F",
+	"Resource": "Resource 3",
+	"Task": "Task 3",
+	"Week": "1",
+	"hours": "50",
+	"__metadata": {
+		"uri": "Booking1Set(ProjectId='ProjectId%203',Year='Year%203',BookingType='BookingType%203')",
+		"type": "S1.Booking1"
+	}
+}]
